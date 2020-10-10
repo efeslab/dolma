@@ -1,0 +1,168 @@
+base_dyn_inst.hh:    bool isNop()          const { return staticInst->isNop(); }
+base_dyn_inst.hh:    bool isMemRef()       const { return staticInst->isMemRef(); }
+base_dyn_inst.hh:    bool isLoad()         const { return staticInst->isLoad(); }
+base_dyn_inst.hh:    bool isStore()        const { return staticInst->isStore(); }
+base_dyn_inst.hh:    bool isAtomic()       const { return staticInst->isAtomic(); }
+base_dyn_inst.hh:    { return staticInst->isStoreConditional(); }
+base_dyn_inst.hh:    bool isInstPrefetch() const { return staticInst->isInstPrefetch(); }
+base_dyn_inst.hh:    bool isDataPrefetch() const { return staticInst->isDataPrefetch(); }
+base_dyn_inst.hh:    bool isInteger()      const { return staticInst->isInteger(); }
+base_dyn_inst.hh:    bool isFloating()     const { return staticInst->isFloating(); }
+base_dyn_inst.hh:    bool isVector()       const { return staticInst->isVector(); }
+base_dyn_inst.hh:    bool isControl()      const { return staticInst->isControl(); }
+base_dyn_inst.hh:    bool isCall()         const { return staticInst->isCall(); }
+base_dyn_inst.hh:    bool isReturn()       const { return staticInst->isReturn(); }
+base_dyn_inst.hh:    bool isDirectCtrl()   const { return staticInst->isDirectCtrl(); }
+base_dyn_inst.hh:    bool isIndirectCtrl() const { return staticInst->isIndirectCtrl(); }
+base_dyn_inst.hh:    bool isCondCtrl()     const { return staticInst->isCondCtrl(); }
+base_dyn_inst.hh:    bool isUncondCtrl()   const { return staticInst->isUncondCtrl(); }
+base_dyn_inst.hh:    bool isCondDelaySlot() const { return staticInst->isCondDelaySlot(); }
+base_dyn_inst.hh:    bool isThreadSync()   const { return staticInst->isThreadSync(); }
+base_dyn_inst.hh:    bool isSerializing()  const { return staticInst->isSerializing(); }
+base_dyn_inst.hh:    { return staticInst->isSerializeBefore() || status[SerializeBefore]; }
+base_dyn_inst.hh:    { return staticInst->isSerializeAfter() || status[SerializeAfter]; }
+base_dyn_inst.hh:    bool isSquashAfter() const { return staticInst->isSquashAfter(); }
+base_dyn_inst.hh:    bool isMemBarrier()   const { return staticInst->isMemBarrier(); }
+base_dyn_inst.hh:    bool isWriteBarrier() const { return staticInst->isWriteBarrier(); }
+base_dyn_inst.hh:    bool isNonSpeculative() const { return staticInst->isNonSpeculative(); }
+base_dyn_inst.hh:    bool isQuiesce() const { return staticInst->isQuiesce(); }
+base_dyn_inst.hh:    bool isIprAccess() const { return staticInst->isIprAccess(); }
+base_dyn_inst.hh:    bool isUnverifiable() const { return staticInst->isUnverifiable(); }
+base_dyn_inst.hh:    bool isSyscall() const { return staticInst->isSyscall(); }
+base_dyn_inst.hh:    bool isMacroop() const { return staticInst->isMacroop(); }
+base_dyn_inst.hh:    bool isMicroop() const { return staticInst->isMicroop(); }
+base_dyn_inst.hh:    bool isDelayedCommit() const { return staticInst->isDelayedCommit(); }
+base_dyn_inst.hh:    bool isLastMicroop() const { return staticInst->isLastMicroop(); }
+base_dyn_inst.hh:    bool isFirstMicroop() const { return staticInst->isFirstMicroop(); }
+base_dyn_inst.hh:    bool isMicroBranch() const { return staticInst->isMicroBranch(); }
+base_dyn_inst.hh:    OpClass opClass() const { return staticInst->opClass(); }
+base_dyn_inst.hh:    { return staticInst->branchTarget(pc); }
+base_dyn_inst.hh:    int8_t numSrcRegs() const { return staticInst->numSrcRegs(); }
+base_dyn_inst.hh:    int8_t numDestRegs() const { return staticInst->numDestRegs(); }
+base_dyn_inst.hh:    int8_t numFPDestRegs()  const { return staticInst->numFPDestRegs(); }
+base_dyn_inst.hh:    int8_t numIntDestRegs() const { return staticInst->numIntDestRegs(); }
+base_dyn_inst.hh:    int8_t numCCDestRegs() const { return staticInst->numCCDestRegs(); }
+base_dyn_inst.hh:    int8_t numVecDestRegs() const { return staticInst->numVecDestRegs(); }
+base_dyn_inst.hh:        return staticInst->numVecElemDestRegs();
+base_dyn_inst.hh:    const RegId& destRegIdx(int i) const { return staticInst->destRegIdx(i); }
+base_dyn_inst.hh:    const RegId& srcRegIdx(int i) const { return staticInst->srcRegIdx(i); }
+base_dyn_inst_impl.hh:    std::cout << staticInst->disassemble(pc.instAddr());
+base_dyn_inst_impl.hh:      << staticInst->disassemble(pc.instAddr());
+checker/cpu_impl.hh:                curStaticInst->getName(), inst->staticInst->getName());
+exetrace.cc:    if (Debug::ExecMacro && staticInst->isMicroop() &&
+exetrace.cc:            macroStaticInst && staticInst->isFirstMicroop()) ||
+exetrace.cc:             macroStaticInst && staticInst->isLastMicroop()))) {
+exetrace.cc:    if (Debug::ExecMicro || !staticInst->isMicroop()) {
+inst_pb_trace.cc:    if ((macroStaticInst && staticInst->isFirstMicroop()) ||
+inst_pb_trace.cc:            !staticInst->isMicroop()) {
+inteltrace.cc:    if (staticInst->isLoad()) {
+inteltrace.cc:    } else if (staticInst->isStore()) {
+minor/dyn_inst.cc:    return !(staticInst->isMicroop() && !staticInst->isLastMicroop());
+minor/dyn_inst.cc:    return isInst() && staticInst->opClass() == No_OpClass;
+minor/dyn_inst.cc:        os << inst.staticInst->getName();
+minor/dyn_inst.cc:        unsigned int num_src_regs = staticInst->numSrcRegs();
+minor/dyn_inst.cc:        unsigned int num_dest_regs = staticInst->numDestRegs();
+minor/dyn_inst.cc:        if (!staticInst->isMacroop()) {
+minor/dyn_inst.cc:                printRegName(regs_str, staticInst->srcRegIdx(src_reg));
+minor/dyn_inst.cc:                printRegName(regs_str, staticInst->destRegIdx(dest_reg));
+minor/dyn_inst.cc:                << std::setfill('0') << staticInst->machInst << std::dec;
+minor/dyn_inst.cc:        staticInst->printFlags(flags, " ");
+minor/dyn_inst.cc:            (staticInst->opClass() == No_OpClass ?
+minor/dyn_inst.cc:                "(invalid)" : staticInst->disassemble(0,NULL)),
+minor/dyn_inst.cc:            Enums::OpClassStrings[staticInst->opClass()],
+minor/dyn_inst.hh:    bool isMemRef() const { return isInst() && staticInst->isMemRef(); }
+minor/execute.cc:        (inst->staticInst->isSerializeAfter() ||
+minor/execute.cc:         inst->staticInst->isSquashAfter() ||
+minor/execute.cc:         inst->staticInst->isIprAccess());
+minor/execute.cc:    bool is_load = inst->staticInst->isLoad();
+minor/execute.cc:    bool is_store = inst->staticInst->isStore();
+minor/execute.cc:    bool is_prefetch = inst->staticInst->isDataPrefetch();
+minor/execute.cc:        if (inst->staticInst->isPrefetch()) {
+minor/execute.cc:        fault = inst->staticInst->completeAcc(packet, &context,
+minor/execute.cc:        Fault init_fault = inst->staticInst->initiateAcc(&context,
+minor/execute.cc:                    fu->provides(inst->staticInst->opClass()) : true);
+minor/execute.cc:                inst->staticInst->isMemBarrier())
+minor/execute.cc:    if (!inst->staticInst->isMicroop() || inst->staticInst->isLastMicroop())
+minor/execute.cc:                               [inst->staticInst->opClass()]++;
+minor/execute.cc:    } else if (inst->staticInst->isMemRef()) {
+minor/execute.cc:    } else if (inst->isInst() && inst->staticInst->isMemBarrier() &&
+minor/execute.cc:    } else if (inst->isInst() && inst->staticInst->isQuiesce()
+minor/execute.cc:        fault = inst->staticInst->execute(&context,
+minor/execute.cc:            if (inst->isInst() && inst->staticInst->isMemBarrier()) {
+minor/execute.cc:            if (!fu->stalled && fu->provides(inst->staticInst->opClass()) &&
+minor/fetch2.cc:    if (inst->staticInst->isControl() ||
+minor/fetch2.cc:        inst->staticInst->isSyscall())
+minor/fetch2.cc:                    dyn_inst->staticInst->isMacroop())
+minor/lsq.cc:    return inst->isInst() && inst->staticInst->isMemBarrier();
+minor/lsq.cc:        if (request->inst->staticInst->isPrefetch()) {
+minor/lsq.cc:    assert(inst->isInst() && inst->staticInst->isMemBarrier());
+minor/scoreboard.cc:    unsigned int num_dests = staticInst->numDestRegs();
+minor/scoreboard.cc:                staticInst->destRegIdx(dest_index), thread_context);
+minor/scoreboard.cc:    unsigned int num_srcs = staticInst->numSrcRegs();
+minor/scoreboard.cc:        RegId reg = flattenRegIndex(staticInst->srcRegIdx(src_index),
+minor/scoreboard.cc:    unsigned int num_dests = staticInst->numDestRegs();
+minor/scoreboard.cc:    unsigned int num_srcs = staticInst->numSrcRegs();
+minor/scoreboard.cc:        RegId reg = flattenRegIndex(staticInst->srcRegIdx(src_index),
+minor/scoreboard.cc:                staticInst->disassemble(0), num_srcs, num_relative_latencies);
+nativetrace.cc:    if (!staticInst->isMicroop() || staticInst->isLastMicroop())
+o3/dyn_inst.hh:                this->staticInst->destRegIdx(idx);
+o3/dyn_inst_impl.hh:                     this->staticInst->disassemble(this->instAddr()));
+o3/dyn_inst_impl.hh:    this->fault = this->staticInst->execute(this, this->traceData);
+o3/dyn_inst_impl.hh:    this->fault = this->staticInst->initiateAcc(this, this->traceData);
+o3/dyn_inst_impl.hh:    this->fault = this->staticInst->completeAcc(pkt, this, this->traceData);
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isNop() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isMemRef() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isLoad() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isStore() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isAtomic() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isStoreConditional() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isInstPrefetch() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isDataPrefetch() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isPrefetch() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isInteger() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isFloating() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isVector() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isCC() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isControl() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isCall() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isReturn() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isDirectCtrl() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isIndirectCtrl() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isCondCtrl() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isUncondCtrl() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isCondDelaySlot() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isThreadSync() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isSerializing() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isSerializeBefore() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isSerializeAfter() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isSquashAfter() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isMemBarrier() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isWriteBarrier() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isNonSpeculative() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isQuiesce() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isIprAccess() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isUnverifiable() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isSyscall() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isMacroop() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isMicroop() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isDelayedCommit() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isLastMicroop() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isFirstMicroop() );
+o3/fetch_impl.hh:            inst->seqNum, inst->staticInst->isMicroBranch() );
+o3/fetch_impl.hh:            instruction->staticInst->
+o3/fetch_impl.hh:                    if (staticInst->isMacroop()) {
+o3/fetch_impl.hh:                newMacro |= staticInst->isLastMicroop();
+o3/iew_impl.hh:                /* inst->staticInst->getName(), */
+o3/iew_impl.hh:                inst->staticInst->disassemble( inst->instAddr() )
+o3/inst_queue_impl.hh:                         inst->staticInst->disassemble( inst->instAddr() ) ); 
+o3/lsq_unit_impl.hh:            loadQueue[loadHead]->staticInst->disassemble( 
+o3/lsq_unit_impl.hh:             storeQueue[store_idx].inst->staticInst->disassemble( 
+o3/lsq_unit_impl.hh:                inst->staticInst->disassemble( inst->instAddr()) );
+o3/lsq_unit_impl.hh:                inst->staticInst->disassemble( inst->instAddr()) );
+o3/probe/simple_trace.cc:             dynInst->staticInst->disassemble(dynInst->instAddr()));
+o3/probe/simple_trace.cc:             dynInst->staticInst->disassemble(dynInst->instAddr()));
+o3/rename_impl.hh:                    (*it)->staticInst->disassemble(inst->instAddr()),
+o3/rob_impl.hh:                /* (*it)->staticInst->getName(), */
+o3/rob_impl.hh:                (*it)->staticInst->disassemble( (*it)->instAddr() ),
+o3/rob_impl.hh:                const std::string &mnemonic_ = inst->staticInst->disassemble(inst->instAddr());
+o3/rob_impl.hh:            head_inst->staticInst->disassemble(head_inst->pcState().pc()));
