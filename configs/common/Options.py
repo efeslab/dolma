@@ -223,10 +223,6 @@ def addCommonOptions(parser):
     # DOLMA options
     parser.add_option('--mode', action="store", type="int", default=0,
                       help="Set DOLMA mode (0 is off, 1 is default, 2 is conservative)")
-    parser.add_option('--blockLoads', action="store", default=0,
-                      help="Have DOLMA block (instead of restrict) loads")
-    parser.add_option('--blockStores', action="store", default=0,
-                      help="Have DOLMA block (instead of restrict) stores")
     parser.add_option('--stt', action="store", default=0,
                       help="Enable STT alongside DOLMA")
 

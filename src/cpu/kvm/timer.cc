@@ -60,7 +60,7 @@
 #define sigev_notify_thread_id     _sigev_un._tid
 #endif
 
-static pid_t
+pid_t
 gettid()
 {
     return syscall(__NR_gettid);
