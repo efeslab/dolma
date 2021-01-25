@@ -1,0 +1,18 @@
+Usage: ./experiment.py --target TARGET --mode MODE --stt STT
+where...
+    - TARGET is one of the following attacks...
+        - bpu_mem_btb_branch
+        - bpu_mem_dcache_load
+        - bpu_mem_dtlb_store
+        - bpu_mem_icache_branch
+        - bpu_reg_dcache_load
+        - mdu_mem_dcache_load
+    - MODE is one of the following...
+        - 0: baseline (no protection)
+        - 1: DOLMA-Default (M+R)
+        - 2: DOLMA-Conservative (M+R)
+        - 3: DOLMA-Default (M)
+        - 4: DOLMA-Conservative (M)
+    - STT is one of the following...
+        - 0: Disabled (no changes to DOLMA)
+        - 1: Enabled (modifies MODE to behave like STT; ignored for baseline)
