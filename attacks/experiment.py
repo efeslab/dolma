@@ -14,6 +14,9 @@ gem5_dir    = Path('..')
 gem5_opt    = gem5_dir / 'build' / 'X86_MESI_Two_Level' / 'gem5.opt'
 gem5_script = Path('.') / 'se_run_experiment.py' #This script will call RunExperiment below
 
+TLB_LOG_EVENT_CODE_ENABLE = 42
+TLB_LOG_EVENT_CODE_DISABLE = 43
+
 def PrintFrameInfo( prefix, frameinfo ):
     print( prefix + "%s:%s:%s" % (      os.path.abspath( frameinfo.filename ), 
                                         frameinfo.function, 
@@ -24,14 +27,6 @@ class ExitCause:
     WORK_BEGIN       = "workbegin"
     WORK_END         = "workend"
     SIMULATION_LIMIT = "simulate() limit reached"
-
-def ToggleFlags(exit_cause, flags):
-    import m5 
-    for flag in flags:
-        if exit_cause == ExitCause.WORK_BEGIN:
-            m5.debug.flags[flag].enable() 
-        else:
-            m5.debug.flags[flag].disable() 
 
 def run_experiment( options, root, system, FutureClass):
     # The following are imported here, since they will be available when RunExperiment 
@@ -45,8 +40,6 @@ def run_experiment( options, root, system, FutureClass):
 
     exit_cause = None
 
-    flags = []
-
     print("**** REAL SIMULATION **** (max ticks: %d)" % options.abs_max_tick )
 
     Simulation.run(options, root, system, FutureClass)
@@ -57,8 +50,6 @@ def run_experiment( options, root, system, FutureClass):
         exit_cause = exit_event.getCause()
 
         print( '='*10 + ' Exiting @ tick %i because %s' % ( m5.curTick(), exit_cause ) )
-        
-        ToggleFlags(exit_cause, flags)
 
         if exit_cause == ExitCause.WORK_BEGIN:
             print( hex( exit_event.getCode() & 0xFFFFFFFFFFFFFFF ) )
@@ -66,7 +57,11 @@ def run_experiment( options, root, system, FutureClass):
             print( hex( exit_event.getCode() & 0xFFFFFFFFFFFFFFF ) )
 
         event_code = exit_event.getCode() & 0xFFFFFFFFFFFFFFF
-        print( hex( exit_event.getCode() & 0xFFFFFFFFFFFFFFF ) )
+
+        if event_code == TLB_LOG_EVENT_CODE_ENABLE:
+            m5.debug.flags[ "TLB" ].enable()
+        elif event_code == TLB_LOG_EVENT_CODE_DISABLE:
+            m5.debug.flags[ "TLB" ].disable()
    
 def run_binary_on_gem5(bin_path, args):
     debugStartCycle   = 0
@@ -103,7 +98,23 @@ def run_binary_on_gem5(bin_path, args):
                      '--debug-start=%d' % debugStartCycle,
                      str(gem5_script) ] + se_py_args
 
-    return subprocess.call(gem5_args)
+    ret = -1
+    if 'bpu_mem_dtlb_store' in str(bin_path):
+        with open('bpu_mem_dtlb_store.out', 'w') as f:
+            ret = subprocess.call(gem5_args, stdout=f)
+        if ret == 0:
+            parse_tlb_log_args = [
+                './scripts/parse_tlb_logs.py',
+                '--log',
+                './bpu_mem_dtlb_store.out',
+            ]
+            ret = subprocess.call(parse_tlb_log_args)
+        else:
+            print("ERROR: TLB attack process exited non-zero")
+    else:
+        ret = subprocess.call(gem5_args)
+    
+    return ret
 
 def Make(target):
     ret = os.system("make {}".format(target))

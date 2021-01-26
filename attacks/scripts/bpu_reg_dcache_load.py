@@ -8,7 +8,7 @@ import pathlib
 parent_dir = pathlib.Path(__file__).parent.absolute()
 
 # generated with gcc version 9.3.0 (Ubuntu 9.3.0-17ubuntu1~20.04)
-# command: gcc src/bpu_reg_dcache_load_old -S -o bin/bpu_reg_dcache_load_old.s
+# command: gcc src/bpu_reg_dcache_load -S -o bin/bpu_reg_dcache_load_old.s
 access_phase = [
     'movl\t(%rax), %eax\n',
     '\ttestl\t%eax, %eax\n',

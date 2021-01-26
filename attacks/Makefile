@@ -23,8 +23,7 @@ basic_btb:
 	@sed -i 's/useIndirect = Param.Bool(True, \"Use indirect branch predictor\")/useIndirect = Param.Bool(False, \"Use indirect branch predictor\")/g' ../src/cpu/pred/BranchPredictor.py
 
 requirements:
-	@PWD=$(shell pwd)
-	@cd ../; env python2 $(SCONS) -j$(NPROC) build/X86_MESI_Two_Level/gem5.opt; cd $(PWD)
+	@cd ../; env python2 $(SCONS) -j$(NPROC) build/X86_MESI_Two_Level/gem5.opt
 	@mkdir -p $(BIN)
 	@mkdir -p $(OUT)
 
@@ -43,7 +42,9 @@ bpu_mem_icache_branch: $(SRC)/bpu_mem_icache_branch.c complex_btb requirements
 	$(CC) $(CFLAGS) $< -static -o $(BIN)/bpu_mem_icache_branch
 
 bpu_mem_dtlb_store: $(SRC)/bpu_mem_dtlb_store.c complex_btb requirements
-	$(CC) $(CFLAGS) $< -static -o $(BIN)/bpu_mem_dtlb_store
+	$(CC) $< -S -I ../include/ -o $(BIN)/bpu_mem_dtlb_store_pre_mod.s
+	@$(SCRIPTS)/bpu_mem_dtlb_store.py
+	$(CC) -I ../include/ "../util/m5/m5op_x86.S" -static $(BIN)/bpu_mem_dtlb_store_post_mod.s -o $(BIN)/bpu_mem_dtlb_store
 
 mdu_mem_dcache_load: $(SRC)/mdu_mem_dcache_load.c complex_btb requirements
 	$(CC) $< -S -o $(BIN)/mdu_mem_dcache_load_pre_mod.s

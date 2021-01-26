@@ -7,7 +7,7 @@ import pathlib
 parent_dir = pathlib.Path(__file__).parent.absolute()
 
 # generated with gcc version 9.3.0 (Ubuntu 9.3.0-17ubuntu1~20.04)
-# command: gcc src/mdu_mem_dcache_load_old -S -o bin/mdu_mem_dcache_load_pre_mod.s
+# command: gcc src/mdu_mem_dcache_load -S -o bin/mdu_mem_dcache_load_pre_mod.s
 access_phase = [
     'leaq\t0(,%rax,8), %rdx\n',
     '\tleaq\tstr(%rip), %rax\n',
