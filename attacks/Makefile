@@ -32,7 +32,7 @@ bpu_mem_dcache_load: $(SRC)/bpu_mem_dcache_load.c complex_btb requirements
 	$(CC) $(CFLAGS) $< -static -o $(BIN)/bpu_mem_dcache_load
 
 bpu_reg_dcache_load: $(SRC)/bpu_reg_dcache_load.c complex_btb requirements
-	$(CC) $< -g -S -o $(BIN)/bpu_reg_dcache_load_pre_mod.s
+	$(CC) $< -S -o $(BIN)/bpu_reg_dcache_load_pre_mod.s
 	@$(SCRIPTS)/bpu_reg_dcache_load.py
 	$(CC) -static $(BIN)/bpu_reg_dcache_load_post_mod.s -o $(BIN)/bpu_reg_dcache_load
 
@@ -46,7 +46,9 @@ bpu_mem_dtlb_store: $(SRC)/bpu_mem_dtlb_store.c complex_btb requirements
 	$(CC) $(CFLAGS) $< -static -o $(BIN)/bpu_mem_dtlb_store
 
 mdu_mem_dcache_load: $(SRC)/mdu_mem_dcache_load.c complex_btb requirements
-	$(CC) $(CFLAGS) $< -static -o $(BIN)/mdu_mem_dcache_load
+	$(CC) $< -S -o $(BIN)/mdu_mem_dcache_load_pre_mod.s
+	@$(SCRIPTS)/mdu_mem_dcache_load.py
+	$(CC) -static $(BIN)/mdu_mem_dcache_load_post_mod.s -o $(BIN)/mdu_mem_dcache_load
 
 all: None
 

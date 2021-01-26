@@ -8,16 +8,13 @@ import pathlib
 parent_dir = pathlib.Path(__file__).parent.absolute()
 
 # generated with gcc version 9.3.0 (Ubuntu 9.3.0-17ubuntu1~20.04)
-# command: gcc src/bpu_reg_dcache_load_old -g -S -o bin/bpu_reg_dcache_load_old.s
+# command: gcc src/bpu_reg_dcache_load_old -S -o bin/bpu_reg_dcache_load_old.s
 access_phase = [
     'movl\t(%rax), %eax\n',
-    '\t.loc 1 39 6\n',
     '\ttestl\t%eax, %eax\n',
     '\tje\t.L5\n',
-    '\t.loc 1 40 13\n',
     '\tmovq\t-16(%rbp), %rax\n',
     '\tmovzbl\t(%rax), %edx\n',
-    '\t.loc 1 40 10\n',
     '\tmovzbl\ttemp(%rip), %eax\n',
     '\tandl\t%edx, %eax\n',
     '\tmovb\t%al, temp(%rip)',
