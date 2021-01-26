@@ -11,8 +11,11 @@ also made in `src/mem/` in order prevent unsafe memory ops from modifying
 the cache hierarchy. All in all, `git grep -il dolma` should reveal
 most/all of the files we changed.
 
+To install the necessary prequisites for DOLMA/gem5, run `./install_dependencies.sh`
+from the repo's top level directory (requires sudo, tested on Ubuntu 20.04).
+
 The attacks we used to test DOLMA's security, along with usage instructions,
-can be found in `attacks`.
+can be found in `attacks/`.
 
 ------------------
 This is the gem5 simulator.
