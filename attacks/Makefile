@@ -23,7 +23,7 @@ basic_btb:
 	@sed -i 's/useIndirect = Param.Bool(True, \"Use indirect branch predictor\")/useIndirect = Param.Bool(False, \"Use indirect branch predictor\")/g' ../src/cpu/pred/BranchPredictor.py
 
 requirements:
-	@cd ../; env python2 $(SCONS) -j$(NPROC) build/X86_MESI_Two_Level/gem5.opt
+	@cd ../; python2 $(SCONS) -j$(NPROC) build/X86_MESI_Two_Level/gem5.opt
 	@mkdir -p $(BIN)
 	@mkdir -p $(OUT)
 

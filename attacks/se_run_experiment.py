@@ -1,3 +1,5 @@
+#!/usr/bin/env python2
+
 # Copyright (c) 2012-2013 ARM Limited
 # All rights reserved.
 #
@@ -64,6 +66,52 @@ from common import CpuConfig
 from common import MemConfig
 from common.Caches import *
 from common.cpu2000 import *
+
+from inspect import currentframe, getframeinfo
+
+TLB_LOG_EVENT_CODE_ENABLE = 42
+TLB_LOG_EVENT_CODE_DISABLE = 43
+
+def PrintFrameInfo( prefix, frameinfo ):
+    print( prefix + "%s:%s:%s" % (      os.path.abspath( frameinfo.filename ), 
+                                        frameinfo.function, 
+                                        frameinfo.lineno ))
+
+class ExitCause:
+    SIMULATION_DONE  = "exiting with last active thread context"
+    WORK_BEGIN       = "workbegin"
+    WORK_END         = "workend"
+    SIMULATION_LIMIT = "simulate() limit reached"
+
+def run_experiment( options, root, system, FutureClass):
+    PrintFrameInfo( "Launching ", getframeinfo(currentframe()) )
+    system.exit_on_work_items = True
+    options.initialize_only = True
+
+    exit_cause = None
+
+    print("**** REAL SIMULATION **** (max ticks: %d)" % options.abs_max_tick )
+
+    Simulation.run(options, root, system, FutureClass)
+
+    while exit_cause != ExitCause.SIMULATION_DONE and \
+          exit_cause != ExitCause.SIMULATION_LIMIT:
+        exit_event = m5.simulate(options.abs_max_tick)
+        exit_cause = exit_event.getCause()
+
+        print( '='*10 + ' Exiting @ tick %i because %s' % ( m5.curTick(), exit_cause ) )
+
+        if exit_cause == ExitCause.WORK_BEGIN:
+            print( hex( exit_event.getCode() & 0xFFFFFFFFFFFFFFF ) )
+        elif exit_cause == ExitCause.WORK_END:
+            print( hex( exit_event.getCode() & 0xFFFFFFFFFFFFFFF ) )
+
+        event_code = exit_event.getCode() & 0xFFFFFFFFFFFFFFF
+
+        if event_code == TLB_LOG_EVENT_CODE_ENABLE:
+            m5.debug.flags[ "TLB" ].enable()
+        elif event_code == TLB_LOG_EVENT_CODE_DISABLE:
+            m5.debug.flags[ "TLB" ].disable()
 
 def get_processes(options):
     """Interprets provided options and returns a list of processes"""
@@ -277,7 +325,5 @@ for cpu in system.cpu:
     cpu.mode = options.mode
     cpu.stt = options.stt
 
-from experiment import run_experiment
-
-run_experiment( options, root, system, FutureClass)
+run_experiment(options, root, system, FutureClass)
 
