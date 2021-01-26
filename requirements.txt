@@ -6,4 +6,3 @@ pandas
 pathlib
 pyelftools
 progressbar2
-pyyaml
