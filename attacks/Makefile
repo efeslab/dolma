@@ -27,40 +27,40 @@ requirements:
 	@mkdir -p $(BIN)
 	@mkdir -p $(OUT)
 
-bpu_mem_dcache_load: $(SRC)/bpu_mem_dcache_load.c complex_btb requirements
-	$(CC) $(CFLAGS) $< -static -o $(BIN)/bpu_mem_dcache_load
+control_mem_dcache_load: $(SRC)/control_mem_dcache_load.c complex_btb requirements
+	$(CC) $(CFLAGS) $< -static -o $(BIN)/control_mem_dcache_load
 
-bpu_reg_dcache_load: $(SRC)/bpu_reg_dcache_load.c complex_btb requirements
-	$(CC) $< -S -o $(BIN)/bpu_reg_dcache_load_pre_mod.s
-	@$(SCRIPTS)/bpu_reg_dcache_load.py
-	$(CC) -static $(BIN)/bpu_reg_dcache_load_post_mod.s -o $(BIN)/bpu_reg_dcache_load
+control_reg_dcache_load: $(SRC)/control_reg_dcache_load.c complex_btb requirements
+	$(CC) $< -S -o $(BIN)/control_reg_dcache_load_pre_mod.s
+	@$(SCRIPTS)/control_reg_dcache_load.py
+	$(CC) -static $(BIN)/control_reg_dcache_load_post_mod.s -o $(BIN)/control_reg_dcache_load
 
-bpu_mem_btb_branch: $(SRC)/bpu_mem_btb_branch.c basic_btb requirements
-	$(CC) $(CFLAGS) $< -static -o $(BIN)/bpu_mem_btb_branch
+control_mem_btb_branch: $(SRC)/control_mem_btb_branch.c basic_btb requirements
+	$(CC) $(CFLAGS) $< -static -o $(BIN)/control_mem_btb_branch
 
-bpu_mem_icache_branch: $(SRC)/bpu_mem_icache_branch.c complex_btb requirements
-	$(CC) $(CFLAGS) $< -static -o $(BIN)/bpu_mem_icache_branch
+control_mem_icache_branch: $(SRC)/control_mem_icache_branch.c complex_btb requirements
+	$(CC) $(CFLAGS) $< -static -o $(BIN)/control_mem_icache_branch
 
-bpu_mem_dtlb_store: $(SRC)/bpu_mem_dtlb_store.c complex_btb requirements
-	$(CC) $< -S -I ../include/ -o $(BIN)/bpu_mem_dtlb_store_pre_mod.s
-	@$(SCRIPTS)/bpu_mem_dtlb_store.py
-	$(CC) -I ../include/ "../util/m5/m5op_x86.S" -static $(BIN)/bpu_mem_dtlb_store_post_mod.s -o $(BIN)/bpu_mem_dtlb_store
+control_mem_dtlb_store: $(SRC)/control_mem_dtlb_store.c complex_btb requirements
+	$(CC) $< -S -I ../include/ -o $(BIN)/control_mem_dtlb_store_pre_mod.s
+	@$(SCRIPTS)/control_mem_dtlb_store.py
+	$(CC) -I ../include/ "../util/m5/m5op_x86.S" -static $(BIN)/control_mem_dtlb_store_post_mod.s -o $(BIN)/control_mem_dtlb_store
 
-mdu_mem_dcache_load: $(SRC)/mdu_mem_dcache_load.c complex_btb requirements
-	$(CC) $< -S -o $(BIN)/mdu_mem_dcache_load_pre_mod.s
-	@$(SCRIPTS)/mdu_mem_dcache_load.py
-	$(CC) -static $(BIN)/mdu_mem_dcache_load_post_mod.s -o $(BIN)/mdu_mem_dcache_load
+data_mem_dcache_load: $(SRC)/data_mem_dcache_load.c complex_btb requirements
+	$(CC) $< -S -o $(BIN)/data_mem_dcache_load_pre_mod.s
+	@$(SCRIPTS)/data_mem_dcache_load.py
+	$(CC) -static $(BIN)/data_mem_dcache_load_post_mod.s -o $(BIN)/data_mem_dcache_load
 
 all: None
 
 None:
 	@echo "ERROR: please specify --target from the following list..."
-	@echo "\tbpu_mem_dcache_load"
-	@echo "\tbpu_reg_dcache_load"
-	@echo "\tbpu_mem_icache_branch"
-	@echo "\tbpu_mem_btb_branch"
-	@echo "\tbpu_mem_dtlb_store"
-	@echo "\tmdu_mem_dcache_load"
+	@echo "\tcontrol_mem_dcache_load"
+	@echo "\tcontrol_reg_dcache_load"
+	@echo "\tcontrol_mem_icache_branch"
+	@echo "\tcontrol_mem_btb_branch"
+	@echo "\tcontrol_mem_dtlb_store"
+	@echo "\tdata_mem_dcache_load"
 	@exit 1
 
 clean:

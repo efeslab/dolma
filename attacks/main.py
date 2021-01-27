@@ -59,14 +59,14 @@ def run_binary_on_gem5(bin_path, args):
                      str(gem5_script) ] + se_py_args
 
     ret = -1
-    if 'bpu_mem_dtlb_store' in str(bin_path):
-        with open('bpu_mem_dtlb_store.out', 'w') as f:
+    if 'control_mem_dtlb_store' in str(bin_path):
+        with open('control_mem_dtlb_store.out', 'w') as f:
             ret = subprocess.call(gem5_args, stdout=f)
         if ret == 0:
             parse_tlb_log_args = [
                 './scripts/parse_tlb_logs.py',
                 '--log',
-                './bpu_mem_dtlb_store.out',
+                './control_mem_dtlb_store.out',
             ]
             ret = subprocess.call(parse_tlb_log_args)
         else:

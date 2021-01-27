@@ -3169,7 +3169,7 @@ void train_then_speculatively_jump(uint64_t victim_vaddr, int guess)
  */
 void die_usage(void)
 {
-    fprintf(stderr, "Usage: ./bpu_mem_icache_branch\n");
+    fprintf(stderr, "Usage: ./control_mem_icache_branch\n");
     exit(1);
 }
 

@@ -87,7 +87,7 @@ int attack(size_t malicious_x)
 
 void die_usage(void)
 {
-    fprintf(stderr, "Usage: ./mdu_mem_dcache_load [secret_value]\n");
+    fprintf(stderr, "Usage: ./data_mem_dcache_load [secret_value]\n");
     fprintf(stderr, "\twhere secret_value is an int from [1,%u)\n",
         NUM_POSSIBLE_ANSWERS);
     exit(1);

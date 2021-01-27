@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# parses output of bpu_mem_dtlb_store attack to check for TLB misses
+# parses output of control_mem_dtlb_store attack to check for TLB misses
 # during recovery. If the attack succeeds, the element indexed by the
 # the secret value (42) will hit in the TLB during recovery, while
 # the other elements will miss.
