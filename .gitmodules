@@ -1,3 +1,6 @@
 [submodule "gem5-mcpat-parser"]
 	path = gem5-mcpat-parser
 	url = https://github.com/efeslab/gem5-mcpat-parser
+[submodule "cMcPAT"]
+	path = cMcPAT
+	url = https://github.com/efeslab/cMcPAT
