@@ -18,31 +18,41 @@ def run_binary_on_gem5(bin_path, args):
     
     if args.smt:
         se_py_args = [
-                      '--mem-type', 'SimpleMemory',
-                      '--smt',
-                      '--cmd', str(bin_path) + ";" + str(bin_path),
-                      '--cpu-type', 'DerivO3CPU',
-                      '--l1d_size', '32kB', 
-                      '--l1i_size', '32kB', 
-                      '--l2_size',  '256kB', 
-                      '--l2cache',
-                      '--caches',
-                      '--mode', str(args.mode),
-                      '--stt', str(args.stt)
-                      ]
+            '--mem-type', 'SimpleMemory',
+            '--smt',
+            '--cmd', str(bin_path) + ";" + str(bin_path),
+            '--cpu-type', 'DerivO3CPU',
+            '--cpu-clock', '2GHz',
+            '--sys-clock', '2GHz',
+            '--l1d_size', '32kB',
+            '--l1d_assoc', '8',
+            '--l1i_size', '32kB',
+            '--l1d_assoc', '8',
+            '--l2_size',  '2MB',
+            '--l2_assoc',  '16',
+            '--l2cache',
+            '--caches',
+            '--mode', str(args.mode),
+            '--stt', str(args.stt)
+        ]
     else:
         se_py_args = [
-                      '--mem-type', 'SimpleMemory',
-                      '--cmd', bin_path,
-                      '--cpu-type', 'DerivO3CPU',
-                      '--l1d_size', '32kB', 
-                      '--l1i_size', '32kB', 
-                      '--l2_size',  '256kB', 
-                      '--l2cache',
-                      '--caches',
-                      '--mode', str(args.mode),
-                      '--stt', str(args.stt)
-                      ]
+            '--mem-type', 'SimpleMemory',
+            '--cmd', bin_path,
+            '--cpu-type', 'DerivO3CPU',
+            '--cpu-clock', '2GHz',
+            '--sys-clock', '2GHz',
+            '--l1d_size', '32kB',
+            '--l1d_assoc', '8',
+            '--l1i_size', '32kB',
+            '--l1d_assoc', '8',
+            '--l2_size',  '2MB',
+            '--l2_assoc',  '16',
+            '--l2cache',
+            '--caches',
+            '--mode', str(args.mode),
+            '--stt', str(args.stt)
+        ]
 
     gem5_args = [str(gem5_opt),
                      '--debug-start=%d' % debugStartCycle,

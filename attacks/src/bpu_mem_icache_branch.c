@@ -17,6 +17,8 @@
 #define YLW  "\x1B[33m"
 #define DEFAULT  "\x1B[0m"
 
+#define CACHE_CYCLES_THRESHOLD 80
+
 /*
  * rdtscp (our high-accuracy timer)
  */
@@ -3216,6 +3218,19 @@ int main(int argc, char **argv)
             if (times[i] < min_time) {
                 min_time = times[i];
                 guess = i;
+            }
+        }
+        if (secret_value == 0) {
+            if (times[0] <  times[1] && times[1] - times[0] > CACHE_CYCLES_THRESHOLD) {
+                fprintf(stderr, "Attack succeeded. Secret correctly guessed as %d\n", secret_value);
+            } else {
+                fprintf(stderr, "Attack failed. Secret value indeterminate\n");
+            }
+        } else if (secret_value == 1) {
+            if (times[1] <  times[0] && times[0] - times[1] > CACHE_CYCLES_THRESHOLD) {
+                fprintf(stderr, "Attack succeeded. Secret correctly guessed as %d\n", secret_value);
+            } else {
+                fprintf(stderr, "Attack failed. Secret value indeterminate\n");
             }
         }
     }

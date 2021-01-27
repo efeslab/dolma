@@ -154,8 +154,36 @@ BaseCPU::BaseCPU(Params *p, bool is_checker)
     _isDolmaMemOnly = _isDolma && (p->mode > 2);
     _isSTT = _isDolma && p->stt;
 
-    cprintf("DOLMA config...\n\tisDolma: %d\n\tisDolmaConservative: %d\n\tisDolmaMemOnly: %d\n\tisSTT: %d\n", _isDolma, _isDolmaConservative, _isDolmaMemOnly, _isSTT);
-
+    cprintf("Using following config...\n");
+    
+    if (_isDolma) {
+        if (_isDolmaMemOnly) {
+            if (_isDolmaConservative) {
+                if (_isSTT) {
+                    cprintf("\tSTT-Futuristic (M)\n");
+                } else {
+                    cprintf("\tDOLMA-Conservative (M)\n");
+                }
+            } else if (_isSTT) {
+                cprintf("\tSTT-Spectre (M)\n");
+            } else {
+                cprintf("\tDOLMA-Default (M)\n");
+            }
+        } else if (_isDolmaConservative) {
+            if (_isSTT) {
+                cprintf("\tSTT-Futuristic (M+R)\n");
+            } else {
+                cprintf("\tDOLMA-Conservative (M+R)\n");
+            }
+        } else if (_isSTT) {
+            cprintf("\tSTT-Spectre (M+R)\n");
+        } else {
+            cprintf("\tDOLMA-Default (M+R)\n");
+        }
+    } else {
+        cprintf("\tBaseline\n");
+    }
+    
     // if Python did not provide a valid ID, do it here
     if (_cpuId == -1 ) {
         _cpuId = cpuList.size();
