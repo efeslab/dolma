@@ -25,20 +25,22 @@ Usage: `./main.py --target TARGET --mode MODE [--stt]`
 
 where...
 
-    - TARGET is one of the following attacks...
-        - control_mem_btb_branch
-        - control_mem_dcache_load
-        - control_mem_dtlb_store
-        - control_mem_icache_branch
-        - control_reg_dcache_load
-        - data_mem_dcache_load
-    - MODE is one of the following...
-        - 0: Baseline (no protection)
-        - 1: DOLMA-Default (M+R)
-        - 2: DOLMA-Conservative (M+R)
-        - 3: DOLMA-Default (M)
-        - 4: DOLMA-Conservative (M)
-    - stt modifies DOLMA to behave like the state-of-the-art defense STT (https://github.com/cwfletcher/stt) for comparison; ignored for baseline
+TARGET is one of the following attacks...
+    - control_mem_btb_branch
+    - control_mem_dcache_load
+    - control_mem_dtlb_store
+    - control_mem_icache_branch
+    - control_reg_dcache_load
+    - data_mem_dcache_load
+
+MODE is one of the following...
+    - 0: Baseline (no protection)
+    - 1: DOLMA-Default (M+R)
+    - 2: DOLMA-Conservative (M+R)
+    - 3: DOLMA-Default (M)
+    - 4: DOLMA-Conservative (M)
+
+stt modifies DOLMA to behave like the state-of-the-art defense [STT](https://github.com/cwfletcher/stt) for comparison; ignored for baseline
 
 NOTE: The `main.py` script is written in python3, while our version of gem5 and
 its management scripts (e.g., `se_run_experiment.py`) use python2 for legacy
