@@ -38,7 +38,7 @@ where...
         - 2: DOLMA-Conservative (M+R)
         - 3: DOLMA-Default (M)
         - 4: DOLMA-Conservative (M)
-    - stt modifies DOLMA to behave like the state-of-the-art defense [STT](https://github.com/cwfletcher/stt) for comparison; ignored for baseline
+    - stt modifies DOLMA to behave like the state-of-the-art defense STT (https://github.com/cwfletcher/stt) for comparison; ignored for baseline
 
 NOTE: The `main.py` script is written in python3, while our version of gem5 and
 its management scripts (e.g., `se_run_experiment.py`) use python2 for legacy
