@@ -47,7 +47,7 @@ compilation reasons.
 ## Expected Results
 
 ### control_mem_btb_branch
-- `mode=0` Baseline: `Success`
+- `mode=0` Baseline: `SUCCESS`
 - `mode=1` DOLMA-Default (M+R): `Fail`
 - `mode=1,stt` STT-Spectre (M+R): `Fail`
 - `mode=2` DOLMA-Conservative (M+R): `Fail`
@@ -58,7 +58,7 @@ compilation reasons.
 - `mode=4,stt` STT-Futuristic (M): `Fail`
 
 ### control_mem_dcache_load
-- `mode=0` Baseline: `Success`
+- `mode=0` Baseline: `SUCCESS`
 - `mode=1` DOLMA-Default (M+R): `Fail`
 - `mode=1,stt` STT-Spectre (M+R): `Fail`
 - `mode=2` DOLMA-Conservative (M+R): `Fail`
@@ -69,18 +69,18 @@ compilation reasons.
 - `mode=4,stt` STT-Futuristic (M): `Fail`
 
 ### control_mem_dtlb_store
-- `mode=0` Baseline: `Success`
+- `mode=0` Baseline: `SUCCESS`
 - `mode=1` DOLMA-Default (M+R): `Fail`
 - `mode=1,stt` STT-Spectre (M+R): `Fail`
 - `mode=2` DOLMA-Conservative (M+R): `Fail`
 - `mode=2,stt` STT-Futuristic (M+R): `Fail`
 - `mode=3` DOLMA-Default (M): `Fail`
-- `mode=3,stt` STT-Spectre (M): `Success`
+- `mode=3,stt` STT-Spectre (M): `SUCCESS`
 - `mode=4` DOLMA-Conservative (M): `Fail`
-- `mode=4,stt` STT-Futuristic (M): `Success`
+- `mode=4,stt` STT-Futuristic (M): `SUCCESS`
 
 ### control_mem_icache_branch
-- `mode=0` Baseline: `Success`
+- `mode=0` Baseline: `SUCCESS`
 - `mode=1` DOLMA-Default (M+R): `Fail`
 - `mode=1,stt` STT-Spectre (M+R): `Fail`
 - `mode=2` DOLMA-Conservative (M+R): `Fail`
@@ -91,23 +91,23 @@ compilation reasons.
 - `mode=4,stt` STT-Futuristic (M): `Fail`
 
 ### control_reg_dcache_load
-- `mode=0` Baseline: `Success`
+- `mode=0` Baseline: `SUCCESS`
 - `mode=1` DOLMA-Default (M+R): `Fail`
 - `mode=1,stt` STT-Spectre (M+R): `Fail`
 - `mode=2` DOLMA-Conservative (M+R): `Fail`
 - `mode=2,stt` STT-Futuristic (M+R): `Fail`
-- `mode=3` DOLMA-Default (M): `Success`
-- `mode=3,stt` STT-Spectre (M): `Success`
-- `mode=4` DOLMA-Conservative (M): `Success`
-- `mode=4,stt` STT-Futuristic (M): `Success`
+- `mode=3` DOLMA-Default (M): `SUCCESS`
+- `mode=3,stt` STT-Spectre (M): `SUCCESS`
+- `mode=4` DOLMA-Conservative (M): `SUCCESS`
+- `mode=4,stt` STT-Futuristic (M): `SUCCESS`
 
 ### data_mem_dcache_load
-- `mode=0` Baseline: `Success`
+- `mode=0` Baseline: `SUCCESS`
 - `mode=1` DOLMA-Default (M+R): `Fail`
-- `mode=1,stt` STT-Spectre (M+R): `Success`
+- `mode=1,stt` STT-Spectre (M+R): `SUCCESS`
 - `mode=2` DOLMA-Conservative (M+R): `Fail`
 - `mode=2,stt` STT-Futuristic (M+R): `Fail`
 - `mode=3` DOLMA-Default (M): `Fail`
-- `mode=3,stt` STT-Spectre (M): `Success`
+- `mode=3,stt` STT-Spectre (M): `SUCCESS`
 - `mode=4` DOLMA-Conservative (M): `Fail`
 - `mode=4,stt` STT-Futuristic (M): `Fail`
