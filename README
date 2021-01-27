@@ -12,8 +12,8 @@ To compile DOLMA, run `python2 $(which scons) -j$(nproc) build/X86_MESI_Two_Leve
 from the repo's top level directory.
 
 The attacks we used to test DOLMA's security, along with usage instructions,
-can be found in `attacks/`. These can be used to reproduce the paper's
-primary security results.
+can be found in `attacks/`. These can be used to verify DOLMA's availability, functionality, and
+reproducibility during artifact evaluation.
 ------------------
 Changes to gem5
 ------------------
