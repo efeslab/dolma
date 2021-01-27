@@ -13,7 +13,7 @@ from the repo's top level directory.
 
 The attacks we used to test DOLMA's security, along with usage instructions,
 can be found in `attacks/`. These can be used to verify DOLMA's availability, functionality, and
-reproducibility during artifact evaluation.
+reproducibility during artifact evaluation. See also `artifact_evaluation/README.md`.
 ------------------
 Changes to gem5
 ------------------
