@@ -1,0 +1,1 @@
+`../lapidary/Makefile` expects a copy of SPEC to be placed in this directory.

@@ -1,0 +1,369 @@
+## checkpoint generated: Thu Apr 16 22:19:27 2020
+
+[Globals]
+curTick=100069000
+version_tags=arm-ccregs arm-contextidr-el2 arm-gem5-gic-ext arm-gicv2-banked-regs arm-hdlcd-upgrade arm-miscreg-teehbr arm-sysreg-mapping-ns armv8 cpu-pid dvfs-perflevel etherswitch ide-dma-abort isa-is-simobject memory-per-range multiple-event-queues process-fdmap-rename remove-arm-cpsr-mode-miscreg ruby-block-size-bytes smt-interrupts x86-add-tlb
+
+[system.tol2bus]
+currPwrState=0
+prvEvalTick=0
+
+[system.tol2bus.snoop_filter]
+
+[system.membus]
+currPwrState=0
+prvEvalTick=0
+
+[system.membus.snoop_filter]
+
+[system.l2]
+bad_checkpoint=false
+
+[system.l2.tags]
+currPwrState=0
+prvEvalTick=0
+
+[system.l2.replacement_policy]
+
+[system.dvfs_handler]
+enableHandler=false
+domain_ids=
+perf_levels=
+whens=
+
+[system.cpu.itb_walker_cache]
+bad_checkpoint=false
+
+[system.cpu.itb_walker_cache.tags]
+currPwrState=0
+prvEvalTick=0
+
+[system.cpu.itb_walker_cache.replacement_policy]
+
+[system.cpu.icache]
+bad_checkpoint=false
+
+[system.cpu.icache.tags]
+currPwrState=0
+prvEvalTick=0
+
+[system.cpu.icache.replacement_policy]
+
+[system.cpu.dtb_walker_cache]
+bad_checkpoint=false
+
+[system.cpu.dtb_walker_cache.tags]
+currPwrState=0
+prvEvalTick=0
+
+[system.cpu.dtb_walker_cache.replacement_policy]
+
+[system.cpu.dcache]
+bad_checkpoint=false
+
+[system.cpu.dcache.tags]
+currPwrState=0
+prvEvalTick=0
+
+[system.cpu.dcache.replacement_policy]
+
+[system.cpu]
+instCnt=0
+_pid=4294967295
+
+[system.cpu.xc.0]
+regs=0 0 0 0 0 0 0 4294967295 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+pendingSmi=false
+smiVector=0
+pendingNmi=false
+nmiVector=0
+pendingExtInt=false
+extIntVector=0
+pendingInit=false
+initVector=0
+pendingStartup=false
+startupVector=0
+startedUp=false
+pendingUnmaskableInt=false
+pendingIPIs=0
+IRRV=0
+ISRV=0
+apicTimerEventScheduled=false
+apicTimerEventTick=0
+_status=0
+funcExeInst=1
+floatRegs.i={{ float_reg_string_0 }}
+vecRegs=0000000000000000
+intRegs={{ int_reg_string_0 }}
+ccRegs=0 0 0 0 0
+_pc={{ pc_string_0 }}
+_npc={{ next_pc_string_0 }}
+_upc=0
+_nupc=1
+_size=0
+
+[system.cpu.xc.1]
+regs=0 0 0 0 0 0 0 4294967295 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+pendingSmi=false
+smiVector=0
+pendingNmi=false
+nmiVector=0
+pendingExtInt=false
+extIntVector=0
+pendingInit=false
+initVector=0
+pendingStartup=false
+startupVector=0
+startedUp=false
+pendingUnmaskableInt=false
+pendingIPIs=0
+IRRV=0
+ISRV=0
+apicTimerEventScheduled=false
+apicTimerEventTick=0
+_status=0
+funcExeInst=1
+floatRegs.i={{ float_reg_string_1 }}
+vecRegs=0000000000000000
+intRegs={{ int_reg_string_1 }}
+ccRegs=0 0 0 0 0
+_pc={{ pc_string_1 }}
+_npc={{ next_pc_string_1 }}
+_upc=0
+_nupc=1
+_size=0
+
+[system.cpu.workload1]
+brkPoint=2105344 {# iangneal: I don't think this matters #}
+stackBase={{ stack_mapping_1.vaddr + stack_mapping_1.size }}
+stackSize={{ stack_mapping_1.size }}
+maxStackSize=8388608
+stackMin={{ stack_mapping_1.vaddr }}
+nextThreadStackBase=140737479962624 {# iangneal: I don't think this matters #}
+mmapEnd=18446744073692774400
+ptable.size={{ mappings_1|length }}
+
+{% for vaddr, mapping in mappings_1.items() %}
+[system.cpu.workload1.Entry{{ loop.index0 }}]
+vaddr={{ mapping.vaddr }}
+paddr={{ mapping.paddr }}
+flags=0
+{% endfor %}
+
+[system.cpu.workload0]
+brkPoint=2105344 {# iangneal: I don't think this matters #}
+stackBase={{ stack_mapping_0.vaddr + stack_mapping_0.size }}
+stackSize={{ stack_mapping_0.size }}
+maxStackSize=8388608
+stackMin={{ stack_mapping_0.vaddr }}
+nextThreadStackBase=140737479962624 {# iangneal: I don't think this matters #}
+mmapEnd=18446744073692774400
+ptable.size={{ mappings_0|length }}
+
+{% for vaddr, mapping in mappings_0.items() %}
+[system.cpu.workload0.Entry{{ loop.index0 }}]
+vaddr={{ mapping.vaddr }}
+paddr={{ mapping.paddr }}
+flags=0
+{% endfor %}
+
+[system.cpu.tracer]
+
+[system.cpu.itb]
+_size=0
+lruSeq=1
+
+[system.cpu.itb.walker]
+currPwrState=0
+prvEvalTick=0
+
+[system.cpu.isa1]
+regVal={{ misc_reg_string_1 }}
+
+[system.cpu.isa0]
+regVal={{ misc_reg_string_0 }}
+
+[system.cpu.interrupts1]
+regs=0 0 0 0 0 0 0 4294967295 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+pendingSmi=false
+smiVector=0
+pendingNmi=false
+nmiVector=0
+pendingExtInt=false
+extIntVector=0
+pendingInit=false
+initVector=0
+pendingStartup=false
+startupVector=0
+startedUp=false
+pendingUnmaskableInt=false
+pendingIPIs=0
+IRRV=0
+ISRV=0
+apicTimerEventScheduled=false
+apicTimerEventTick=0
+
+[system.cpu.interrupts0]
+regs=0 0 0 0 0 0 0 4294967295 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+pendingSmi=false
+smiVector=0
+pendingNmi=false
+nmiVector=0
+pendingExtInt=false
+extIntVector=0
+pendingInit=false
+initVector=0
+pendingStartup=false
+startupVector=0
+startedUp=false
+pendingUnmaskableInt=false
+pendingIPIs=0
+IRRV=0
+ISRV=0
+apicTimerEventScheduled=false
+apicTimerEventTick=0
+
+[system.cpu.apic_clk_domain]
+
+[system.cpu.fuPool]
+
+[system.cpu.fuPool.FUList8]
+
+[system.cpu.fuPool.FUList8.opList]
+
+[system.cpu.fuPool.FUList7]
+
+[system.cpu.fuPool.FUList7.opList3]
+
+[system.cpu.fuPool.FUList7.opList2]
+
+[system.cpu.fuPool.FUList7.opList1]
+
+[system.cpu.fuPool.FUList7.opList0]
+
+[system.cpu.fuPool.FUList6]
+
+[system.cpu.fuPool.FUList6.opList1]
+
+[system.cpu.fuPool.FUList6.opList0]
+
+[system.cpu.fuPool.FUList5]
+
+[system.cpu.fuPool.FUList5.opList19]
+
+[system.cpu.fuPool.FUList5.opList18]
+
+[system.cpu.fuPool.FUList5.opList17]
+
+[system.cpu.fuPool.FUList5.opList16]
+
+[system.cpu.fuPool.FUList5.opList15]
+
+[system.cpu.fuPool.FUList5.opList14]
+
+[system.cpu.fuPool.FUList5.opList13]
+
+[system.cpu.fuPool.FUList5.opList12]
+
+[system.cpu.fuPool.FUList5.opList11]
+
+[system.cpu.fuPool.FUList5.opList10]
+
+[system.cpu.fuPool.FUList5.opList09]
+
+[system.cpu.fuPool.FUList5.opList08]
+
+[system.cpu.fuPool.FUList5.opList07]
+
+[system.cpu.fuPool.FUList5.opList06]
+
+[system.cpu.fuPool.FUList5.opList05]
+
+[system.cpu.fuPool.FUList5.opList04]
+
+[system.cpu.fuPool.FUList5.opList03]
+
+[system.cpu.fuPool.FUList5.opList02]
+
+[system.cpu.fuPool.FUList5.opList01]
+
+[system.cpu.fuPool.FUList5.opList00]
+
+[system.cpu.fuPool.FUList4]
+
+[system.cpu.fuPool.FUList4.opList1]
+
+[system.cpu.fuPool.FUList4.opList0]
+
+[system.cpu.fuPool.FUList3]
+
+[system.cpu.fuPool.FUList3.opList4]
+
+[system.cpu.fuPool.FUList3.opList3]
+
+[system.cpu.fuPool.FUList3.opList2]
+
+[system.cpu.fuPool.FUList3.opList1]
+
+[system.cpu.fuPool.FUList3.opList0]
+
+[system.cpu.fuPool.FUList2]
+
+[system.cpu.fuPool.FUList2.opList2]
+
+[system.cpu.fuPool.FUList2.opList1]
+
+[system.cpu.fuPool.FUList2.opList0]
+
+[system.cpu.fuPool.FUList1]
+
+[system.cpu.fuPool.FUList1.opList1]
+
+[system.cpu.fuPool.FUList1.opList0]
+
+[system.cpu.fuPool.FUList0]
+
+[system.cpu.fuPool.FUList0.opList]
+
+[system.cpu.dtb]
+_size=0
+lruSeq=1
+
+[system.cpu.dtb.walker]
+currPwrState=0
+prvEvalTick=0
+
+[system.cpu_clk_domain]
+_perfLevel=0
+
+[system.cpu_voltage_domain]
+_perfLevel=0
+
+[system.cpu.branchPred]
+
+[system]
+pagePtr={{ mappings_0|length + mappings_1|length }}
+
+[system.physmem]
+lal_addr=
+lal_cid=
+nbr_of_stores=1
+
+[system.physmem.store0]
+store_id=0
+filename=system.physmem.store0.pmem
+range_size={{ mem_size }}
+
+[system.mem_ctrls]
+currPwrState=0
+prvEvalTick=0
+
+[system.clk_domain]
+_perfLevel=0
+
+[system.voltage_domain]
+_perfLevel=0
+
+[root]
+FullSystem=false
+isa=x86
