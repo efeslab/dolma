@@ -21,7 +21,7 @@ The exception to this is `control_mem_dtlb_store`, as TLB timing differences (i.
 
 Prequisite: run `install_dependencies.sh` in the repo's top level directory.
 
-Usage: `./main.py --target TARGET --mode MODE \[--stt\]`
+Usage: `./main.py --target TARGET --mode MODE [--stt]`
 
 where...
 
