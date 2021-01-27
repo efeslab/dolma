@@ -26,6 +26,7 @@ Usage: `./main.py --target TARGET --mode MODE [--stt]`
 where...
 
 TARGET is one of the following attacks...
+
     - control_mem_btb_branch
     - control_mem_dcache_load
     - control_mem_dtlb_store
@@ -34,6 +35,7 @@ TARGET is one of the following attacks...
     - data_mem_dcache_load
 
 MODE is one of the following...
+
     - 0: Baseline (no protection)
     - 1: DOLMA-Default (M+R)
     - 2: DOLMA-Conservative (M+R)
