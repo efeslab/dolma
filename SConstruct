@@ -369,7 +369,7 @@ if main['GCC'] or main['CLANG']:
 
     if main['GCC']:
         gcc_version = readCommand([main['CXX'], '-dumpversion'], exception=False)
-        if compareVersions(gcc_version, "9.0") >= 0:
+        if compareVersions(gcc_version, "9") >= 0:
             cc_flags += ['-Wno-error=deprecated-copy',
                          '-Wno-error=address-of-packed-member']
 
