@@ -3,7 +3,7 @@
 This is the source code for our USENIX Security paper "DOLMA:
 Securing Speculation with the Principle of Transient Non-Observability".
 DOLMA is a defense against transient execution attacks, implemented in the [gem5 simulator](https://github.com/gem5/gem5).
-When using code from this repository, please be sure to cite [the paper](https://www.usenix.org/conference/usenixsecurity21/presentation/loughlin).
+When using code from this repository, please be sure to cite [the paper](https://www.kevinloughlin.org/dolma.pdf).
 
 We recommend compiling and running this code on Ubuntu 20.04, as that's where we've tested our
 setup. However, you _may_ be able to compile and run on Ubuntu 18.04. See [this document](https://www.gem5.org/documentation/general_docs/building) for the differences in gem5 dependencies on Ubuntu 20.04 versus 18.04.
