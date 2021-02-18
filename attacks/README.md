@@ -102,8 +102,8 @@ compilation reasons.
 - `mode=2,stt` STT-Futuristic (M+R): `Fail`
 - `mode=3` DOLMA-Default (M): `SUCCESS`
 - `mode=3,stt` STT-Spectre (M): `SUCCESS`
-- `mode=4` DOLMA-Conservative (M): `SUCCESS`
-- `mode=4,stt` STT-Futuristic (M): `SUCCESS`
+- `mode=4` DOLMA-Conservative (M): `Fail`
+- `mode=4,stt` STT-Futuristic (M): `Fail`
 
 ### data_mem_dcache_load
 - `mode=0` Baseline: `SUCCESS`
