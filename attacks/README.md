@@ -19,7 +19,7 @@ The exception to this is `control_mem_dtlb_store`, as TLB timing differences (i.
 
 ## Instructions
 
-Prequisite: run `install_dependencies.sh` in the repo's top level directory.
+Prequisite: install dependencies (see README.md in the top level directory)
 
 Usage: `./main.py --target TARGET --mode MODE [--stt]`
 

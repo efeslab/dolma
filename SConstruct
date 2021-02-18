@@ -363,14 +363,19 @@ if main['GCC'] or main['CLANG']:
     main.Append(PSHLINKFLAGS=shared_partial_flags)
     main.Append(PLINKFLAGS=shared_partial_flags)
 
+    cc_flags = ['-Werror',
+                '-Wno-error=deprecated-declarations',
+                '-Wno-error=deprecated']
+
+    if main['GCC']:
+        gcc_version = readCommand([main['CXX'], '-dumpversion'], exception=False)
+        if compareVersions(gcc_version, "9.0") >= 0:
+            cc_flags += ['-Wno-error=deprecated-copy',
+                         '-Wno-error=address-of-packed-member']
+
     # Treat warnings as errors but white list some warnings that we
     # want to allow (e.g., deprecation warnings).
-    main.Append(CCFLAGS=['-Werror',
-                         '-Wno-error=deprecated-declarations',
-                         '-Wno-error=deprecated',
-                         '-Wno-error=deprecated-copy',
-                         '-Wno-error=address-of-packed-member',
-                        ])
+    main.Append(CCFLAGS=cc_flags)
 else:
     print(termcap.Yellow + termcap.Bold + 'Error' + termcap.Normal, end=' ')
     print("Don't know what compiler options to use for your compiler.")
