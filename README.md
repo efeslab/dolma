@@ -1,5 +1,5 @@
 # DOLMA
-------------------
+
 This is the source code for our USENIX Security paper "DOLMA:
 Securing Speculation with the Principle of Transient Non-Observability".
 DOLMA is a defense against transient execution attacks, implemented in the [gem5 simulator](https://github.com/gem5/gem5).
@@ -16,9 +16,9 @@ from the repo's top level directory.
 The attacks we used to test DOLMA's security, along with usage instructions,
 can be found in `attacks/`. These can be used to verify DOLMA's availability, functionality, and
 reproducibility during artifact evaluation. See also `artifact_evaluation/README.md`.
-------------------
-Changes to gem5
-------------------
+
+## Changes to gem5
+
 Most of the changes made for DOLMA can be found in `src/cpu/o3/`. At a high level,
 they include adding the infrastructure for tracking speculative status
 and enforcing restricted execution for unsafe micro-ops. A good place to
